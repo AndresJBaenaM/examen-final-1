@@ -3,7 +3,7 @@ Mi nombre es Andrés :D este es mi examen final
 
 # 🐉 DragonDex
 
-Aplicación web desarrollada con **React + TypeScript + Vite**  que consume la **PokéAPI** para mostrar dragones (Pokémon tipo dragón).  
+Aplicación web desarrollada con **React + TypeScript + Vite**  que consume la **PokéAPI** para mostrar pokemones.  
 Incluye búsqueda, un detalle de cada dragón y un sistema de favoritos.
 
 ## Características
