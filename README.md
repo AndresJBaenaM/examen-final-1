@@ -15,3 +15,5 @@ Incluye búsqueda, un detalle de cada dragón y un sistema de favoritos.
 ## ⚙️ Instalación
 1. Clona el repositorio:
    git clone https://github.com/AndresJBaenaM/examen-final-1
+2. npm install en bash
+3. npm run dev
