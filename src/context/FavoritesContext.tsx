@@ -1,25 +1,36 @@
 import { createContext, useContext, useState } from 'react'
+import type { ReactNode } from 'react'
+import type { Dragon } from '../services/DragonService'
 
-const FavoritesContext = createContext(null)
+const FavoritesContext = createContext<{
+  favorites: Dragon[]
+  addFavorite: (dragon: Dragon) => void
+  removeFavorite: (dragonName: string) => void
+  isFavorite: (dragonName: string) => boolean
+} | null>(null)
 
-export function FavoritesProvider({ children }) {
-  const [favorites, setFavorites] = useState([])
+export function FavoritesProvider({ children }: { children: ReactNode }) {
+  const [favorites, setFavorites] = useState<Dragon[]>([])
 
-  // TODO: Implementar función addFavorite(dragon)
-  // - Si el dragón ya está en favoritos, no hacer nada
-  // - Agregar el dragón al array de favoritos
+  function addFavorite(dragon: Dragon) {
+    if (!favorites.some(f => f.name === dragon.name)) {
+      setFavorites([...favorites, dragon])
+    }
+  }
 
-  // TODO: Implementar función removeFavorite(dragonName)
-  // - Filtrar el dragón del array por nombre
+  function removeFavorite(dragonName: string) {
+    setFavorites(favorites.filter(f => f.name !== dragonName))
+  }
 
-  // TODO: Implementar función isFavorite(dragonName)
-  // - Retornar true si el dragón ya está en favoritos
+  function isFavorite(dragonName: string) {
+    return favorites.some(f => f.name === dragonName)
+  }
 
   const value = {
     favorites,
-    // addFavorite,     // ← reemplazar con función real
-    // removeFavorite,  // ← reemplazar con función real
-    // isFavorite,      // ← reemplazar con función real
+    addFavorite,
+    removeFavorite,
+    isFavorite,
   }
 
   return (
